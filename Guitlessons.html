@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Guitlessons</title>
+        <!--required metatags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--link to icon library-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://use.typekit.net/olx0gyq.css">
+        <!--link to font awesome-->
+        <script src="https://kit.fontawesome.com/f4630369f4.js" crossorigin="anonymous"></script>
+        
+        <!--using JQuery to animate words-->
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                count = 0;
+                wordsArray = ["Explore your favorite genres.",
+                "Learn from the best instructors.", 
+            "Share your progress with friends."
+            ];
+                setInterval(function () { //automates text change
+                    count++;
+                    $(".fade-header").fadeOut(400, function () {
+                    $(this).text(wordsArray[count % wordsArray.length]).fadeIn(400);
+                    });
+                }, 8000);
+            });
+
+            let hamburgerClick = true;
+
+            //create animation function
+            function hamburger(x) {
+                x.classList.toggle("change");
+
+                //hamburgerClick = true;
+
+                if(hamburgerClick){   
+                //var act = $(x).hasClass("change");
+                document.getElementById("myNav").style.width="100%";
+                
+                hamburgerClick = false;
+                
+                }else{
+                    document.getElementById("myNav").style.width="0";
+                    
+                    //$("body").css("background-color", "rgb(255, 188, 75)")
+
+                    hamburgerClick = true;
+
+                }
+                
+            }
+
+            $(document).ready(function() {
+            let currentIndex = 0;
+            let photos = $('.photo');
+            //element.toggleClass('photoSwipe');
+            function moveCurrentClass() {
+                let element = photos.eq(currentIndex);
+                element.toggleClass('photoSwipe');
+                
+                photos.eq(currentIndex).removeClass('current');
+                currentIndex = (currentIndex + 1) % photos.length;
+                photos.eq(currentIndex).addClass('current');
+            }
+
+            moveCurrentClass();
+            setInterval(moveCurrentClass, 8000); // Call moveCurrentClass every 8000ms
+        });            
+            
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="menubar">
+                <div>
+                    <h3 class="heading">Guit<span style="font-weight: lighter;">Lessons</span></h3>
+                </div>
+                <div id="mobile-button" onclick = "hamburger(this)">
+                    <div class = "bar1"></div>
+                    <div class = "bar2"></div>
+                    <div class = "bar3"></div>
+                </div>
+                <div id="links">
+                    <a class="flexlink"><span class="hovlink">Team</span></a>
+                    <a class="flexlink"><span class="hovlink">Login</span></a>
+                    <a class="flexlink"><span class="hovlink">Join</span></a>
+                </div>
+                
+            </div>
+            <div id="carousection">
+                <div class="carouseText">
+                    <!--<h1 class="fade-header">Lorem ipsum dolor sit amet, consectetur elit.</h1>-->
+                    <h2 class="fade-header">Explore your favorite genres</h2>    
+                </div>
+                <div class="carousePhoto">
+                    
+                    <div id="photolist">
+                        <div class="photo current"><img src="./photos/capture-2.JPG"></div>
+                        <div class="photo"><img src="./photos/Capture.JPG"></div>
+                        <div class="photo"><img src="./photos/Capture-4.JPG"></div>
+                        
+                    </div>  
+                </div> 
+                
+            </div>
+        </div>
+        <!--overlay div-->
+        <div id="myNav" class = "overlay">
+            <!--button to close overlay nav-->
+            <a href="javascript:void(0)" class="closebtn" onclick="hamburger(this)"></a>
+
+            <!--overlay content-->
+            <div class="overlay-content">
+                <a>Team</a>
+                <a>Login</a>
+                <a>Join</a>
+            </div>
+        </div>
+    </body>
+</html>
