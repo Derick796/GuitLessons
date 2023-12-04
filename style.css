@@ -1,0 +1,337 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(255, 188, 75);
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+#container {
+  height: 100vh;
+}
+
+#menubar {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2em;
+  margin: 0 2.5em 0;
+  width: auto;
+}
+@media (max-width: 48em) {
+  #menubar {
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+  }
+}
+
+.heading {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 2em;
+}
+@media (max-width: 48em) {
+  .heading {
+    font-size: 4em;
+    margin-left: 30px;
+  }
+}
+
+h3 {
+  animation: headingload 350ms ease-out;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes headingload {
+  from {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+#mobile-button {
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: -225px;
+  animation: headingload 350ms ease-out;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+@media (min-width: 48em) {
+  #mobile-button {
+    display: none;
+  }
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 50px;
+  height: 4px;
+  background-color: black;
+  margin: 10px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  transform: translate(0, 14px) rotate(45deg);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: translate(0, -14px) rotate(-45deg);
+}
+
+#links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 48em) {
+  #links {
+    display: none;
+  }
+}
+
+.flexlink {
+  margin: 0 0.75em 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  animation: headingload 350ms ease-out;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.flexlink:nth-child(2) {
+  animation-delay: 1.8s;
+}
+
+.flexlink:nth-child(3) {
+  animation-delay: 2s;
+}
+
+.flexlink:hover:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 0.25em;
+  border-radius: 2em;
+  border-bottom: 5px solid;
+  margin: 10px 20px;
+  animation: dotfade 350ms;
+  opacity: 0.4;
+}
+
+@keyframes dotfade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+.hovlink:hover {
+  animation: linkblur 350ms;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes linkblur {
+  from {
+    color: rgb(0, 0, 0);
+  }
+  to {
+    color: rgba(0, 0, 0, 0.4);
+  }
+}
+#carousection {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 48em) {
+  #carousection {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+    width: auto;
+    position: absolute;
+    top: 35%;
+    left: -75px;
+    transform: translate(10%, 0);
+  }
+}
+#carousection .carouseText {
+  top: 20%;
+  left: 10%;
+  width: 10em;
+  position: absolute;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+  padding-right: 1em;
+}
+@media (max-width: 48em) {
+  #carousection .carouseText {
+    font-size: 3em;
+    margin-top: 12em;
+    left: 175px;
+  }
+}
+#carousection .carousePhoto {
+  margin-left: 10em;
+  position: absolute;
+  top: 20%;
+  animation-iteration-count: infinite;
+}
+@media (max-width: 48em) {
+  #carousection .carousePhoto {
+    padding: 0;
+  }
+}
+
+img {
+  width: 30em;
+  height: auto;
+  box-shadow: 0px 0px 10px black;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: inline-block;
+  transform-origin: 50% 99%;
+}
+@media (max-width: 48em) {
+  img {
+    padding: 0;
+  }
+}
+
+@keyframes imgSwipe {
+  from {
+    transform: rotate(0deg) translateX(100em);
+  }
+  to {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes imgSwipe2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(0deg) translateX(100em);
+  }
+}
+#photolist {
+  animation: imgSwipe 1.5s ease-out;
+}
+@media (max-width: 48em) {
+  #photolist {
+    padding: 0;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+}
+
+.photo {
+  display: block;
+  position: absolute;
+  transform: rotate(7deg);
+  scale: 1;
+}
+
+.current {
+  display: block;
+  transform: rotate(0deg);
+  z-index: 3;
+}
+
+.photoSwipe {
+  animation: imgSwipe2 1s ease-out;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  top: 0;
+  position: fixed;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.overlay a {
+  padding: 8px;
+  font-size: 8em;
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  line-height: 1.2;
+  letter-spacing: -0.06em;
+  display: block;
+  transition: 0.3s;
+  background-color: white;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+.changecolor {
+  animation: change-color 0.5s ease-out;
+}
+
+@keyframes change-color {
+  from {
+    background-position: right;
+    background-color: rgb(255, 188, 75);
+  }
+  to {
+    background-color: white;
+  }
+}
+/*.fade-header {
+  opacity: 1;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  //animation-delay: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+*//*# sourceMappingURL=style.css.map */
